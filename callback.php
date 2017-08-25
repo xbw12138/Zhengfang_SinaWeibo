@@ -44,8 +44,10 @@ if (isset($_REQUEST['code'])) {
 	}
 ?>
 <!DOCTYPE html>
-<html>
-<head> </head>
+<html xmlns:wb="http://open.weibo.com/wb">
+<head> 
+<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+</head>
 <body>
 <div style="text-align:center;clear:both;">
 <?php
@@ -60,10 +62,22 @@ if (isset($token)) {
 	if(!userExist()){
 		userInsert();
 	}
-	header("refresh:2;url=http://nanopi.ecfun.cc");
-	echo "授权成功，正在进入山东科技大学正方教务系统";
+	$ms  = $c->user_timeline_by_id(); // done
+	if( is_array( $ms['statuses'] ) ){
+   		if(substr($ms['statuses'][0]['text'], 0, 30)=="正方教务管理系统外网"){
+			header("refresh:2;url=http://nanopi.ecfun.cc");
+			echo "<h2>授权成功，正在进入山东科技大学正方教务系统";
+		}else{
+			echo "<h2>您还没有分享，去分享<br>";
+			echo '<center><wb:share-button appkey="1857277708" addition="number" type="button" ralateUid="5368201773" default_text="正方教务管理系统外网 http://sdust.ecfun.cc" pic="http%3A%2F%2Fwx2.sinaimg.cn%2Fmw690%2F653abd37ly1fisbdc88fzj21m00winbw.jpg"></wb:share-button></center><br>';
+			echo "<h2>分享成功后重新退回首页，自动授权<br>";
+		}
+	}else{
+		echo "<h2>未获取到微博内容／未关注，去关注";
+	}
+	
 } else {
-	echo "授权失败";
+	echo "<h2>授权失败，退回首页重新授权";
 }
 ?>
 </div>

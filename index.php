@@ -13,8 +13,9 @@
 				   <a href="login.php" id="download-button"><img src="weibo_login.png"></a>
                 </div>
 			   <div class="row center">
-				   <wb:share-button appkey="1857277708" addition="number" type="button" default_text="#山东科技大学#
-正方教务管理系统（外网）" ralateUid="5368201773" ></wb:share-button><wb:follow-button uid="1661932801" type="red_1" width="67" height="24" ></wb:follow-button>
+				   
+<wb:share-button appkey="1857277708" addition="number" type="button" ralateUid="5368201773" default_text="正方教务管理系统外网 http://sdust.ecfun.cc" pic="http%3A%2F%2Fwx2.sinaimg.cn%2Fmw690%2F653abd37ly1fisbdc88fzj21m00winbw.jpg"></wb:share-button>
+<wb:follow-button uid="1661932801" type="red_1" width="67" height="24" ></wb:follow-button>
                 </div>
 
 
